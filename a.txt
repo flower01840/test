@@ -1,1 +1,9 @@
 sudo pip install shadowsocks
+echo 3 > /proc/sys/net/ipv4/tcp_fastopen
+yum install -y libevent
+pip install greenlet
+pip install gevent
+echo "net.core.default_qdisc = fq" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.conf 
+sysctl -p
+lsmod | grep bbr
